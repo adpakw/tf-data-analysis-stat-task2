@@ -8,5 +8,4 @@ chat_id = 451783978 # Ваш chat ID, не меняйте название пе�
 
 def solution(p: float, x: np.array) -> tuple:
     alpha = 1 - p
-    std = np.std(x, ddof=1)
-    return 2 * x.mean() - 2 * std * norm.ppf(alpha / 2) / np.sqrt(len(x)), 2 * x.mean() + 2 * std * norm.ppf(1 - alpha / 2) / np.sqrt(len(x))
+    return 2 * (x.mean() + norm.ppf(alpha / 2) * np.var(x) / np.sqrt(len(x))), 2 * (x.mean() + norm.ppf(1 - alpha / 2) * np.var(x) / np.sqrt(len(x)))
